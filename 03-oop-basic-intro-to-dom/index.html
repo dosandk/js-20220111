@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+<body>
+  <div id="root"></div>
+</body>
+
+<script>
+
+  // Hello, world!
+  class Component {
+    constructor(title) {
+      this.title = title;
+
+      this.render();
+    }
+
+    getTemplate () {
+      return `
+        <div>
+          <h1>${this.title}</h1>
+        </div>
+      `;
+    }
+
+    render () {
+      const elem = document.createElement('div');
+
+      elem.innerHTML = this.getTemplate();
+
+      this.element = elem.firstElementChild;
+    }
+  }
+
+  const title = 'Hello, John!';
+  const obj = new Component(title);
+
+  const root = document.getElementById('root');
+  console.error(obj);
+  console.error(root);
+
+  root.append(obj.element);
+</script>
+
