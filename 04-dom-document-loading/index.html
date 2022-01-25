@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+<body>
+  <div id="root"></div>
+</body>
+
+<script>
+  new Calendar();
+
+  const format = (str = '') => {
+    console.error(new Date(str));
+  }
+
+  class Calendar {
+
+
+    constructor() {
+
+    }
+
+    render () {
+      // 1. Не используете this
+      // 2. Не планируете использовать за пределами класса
+    }
+
+    remove () {
+      Calendar.format();
+    }
+  }
+
+  Component.format('2005-12-12');
+
+
+  // console.error(obj);
+  // console.error(obj.constructor.prototype);
+</script>
