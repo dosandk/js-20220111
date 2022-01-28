@@ -6,32 +6,69 @@
 </body>
 
 <script>
-  new Calendar();
+  class Notification {
+    static format = 1;
 
-  const format = (str = '') => {
-    console.error(new Date(str));
-  }
-
-  class Calendar {
-
+    static getTimerId = () => {
+      return 'super id';
+    }
 
     constructor() {
-
+      this.render()
     }
 
-    render () {
-      // 1. Не используете this
-      // 2. Не планируете использовать за пределами класса
+    getTemplate () {
+      return `<div>hello basic notification</div>`;
     }
+
+    render() {
+      const element = document.createElement('div');
+
+      element.innerHTML = this.getTemplate();
+
+      this.element = element.firstElementChild;
+    }
+
 
     remove () {
-      Calendar.format();
+      this.element.remove();
+    }
+
+    destroy () {
+      this.remove();
     }
   }
 
-  Component.format('2005-12-12');
+  class SuccessNotification extends Notification {
+    getTemplate () {
+      return `<div style="color: green">hello basic notification</div>`;
+    }
 
+    destroy () {
+      console.error(Date.now());
+      super.destroy();
+    }
+  }
 
-  // console.error(obj);
-  // console.error(obj.constructor.prototype);
+  class ErrorNotification extends Notification {
+    getTemplate () {
+      return `<div style="color: red">hello basic notification</div>`;
+    }
+  }
+
+  class WarningNotification extends Notification {
+    getTemplate () {
+      return `<div style="color: yellow">hello basic notification</div>`;
+    }
+  }
+
+  const success = new SuccessNotification();
+  const error = new ErrorNotification();
+  const warning = new WarningNotification();
+
+  document.body.append(success.element)
+  document.body.append(error.element)
+  document.body.append(warning.element)
+
+  console.error(SuccessNotification.format);
 </script>
