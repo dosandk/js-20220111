@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+<body>
+  <div id="root"></div>
+</body>
+
+<script>
+  // event loop start
+    // (1)
+    setTimeout(() => {
+      console.error(1111);
+    }, 0);
+
+    setTimeout(() => {
+      console.error(5555);
+    }, 0);
+
+    // (2)
+    Promise.resolve()
+      .then(() => {
+        console.error(3333);
+      })
+
+    // (3)
+    async function loadData () {
+      await 1;
+      console.error(4444);
+    }
+
+    loadData();
+  // event loop end
+
+  console.error(2222);
+</script>
