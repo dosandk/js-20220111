@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+<body>
+  <button id="btn">Click me!</button>
+</body>
+
+<script>
+  btn.addEventListener('click', () => {
+    const myEvent = new CustomEvent('range-select', {
+      detail: {
+        from: 100,
+        to: 200
+      },
+      bubbles: true
+    });
+
+    btn.dispatchEvent(myEvent);
+  });
+
+  document.addEventListener('range-select', event => {
+    console.error(event);
+  });
+</script>
