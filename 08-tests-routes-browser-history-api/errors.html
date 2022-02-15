@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <script>
+    // example #0: how to create error and throw exeption
+
+    // create error
+    const errorObj = new Error('some error message');
+    // throw some exeption or error object
+    throw 1 + 2 * 100; // some exeption
+    throw errorObj;
+  </script>
+
+  <script>
+    // example #1: create error
+    const error = new Error('someting went wrong!');
+    console.log('Label', error);
+
+    // example #2: stack trace
+    const createError = () => {
+      const error = new Error('something went wrong');
+
+      console.log('Label:', error);
+    }
+
+    function level1 () {
+      function level2 () {
+        createError();
+      }
+
+      level2();
+    }
+
+    level1();
+
+    // example #3: error inside catch block
+
+    try {
+
+        } catch {
+
+            }
+
+
+
+  </script>
+</body>
+</html>
